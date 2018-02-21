@@ -4,11 +4,11 @@ description of app goes here
 
 ### WireFrames
 
-![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/wireFrames/home_page.png "Home Page")
+![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/blob/master/wireFrames/home_page.png "Home Page")
 
-![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/wireFrames/settings.png "Settings Page")
+![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/blob/master/wireFrames/settings.png "Settings Page")
 
-![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/wireFrames/signup.png "Signup Page")
+![alt text](https://github.com/chadkeeven/alexa-mobile-reminder-app/blob/master/wireFrames/signup.png "Signup Page")
 
 Screenshots of app go here too
 
