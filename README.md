@@ -14,6 +14,8 @@ Screenshots of app go here too
 
 ### Trello Board 
 
+https://trello.com/b/S1LYXhDM/alexa-mobile-reminders-app
+
 ### Technologies Used
 
 ### The Steps I took to build this 
