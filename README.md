@@ -1,6 +1,6 @@
 # Alexa React Native Reminder app
 
-description of app goes here
+React Native application that saves reminders to where Amazon's Alexa can remind you later.
 
 ### WireFrames
 
@@ -17,6 +17,16 @@ Screenshots of app go here too
 https://trello.com/b/S1LYXhDM/alexa-mobile-reminders-app
 
 ### Technologies Used
+* HTML5
+* Node.js
+* React Native
+* NoSQL
+* Passport node module
+* SASS
+* Alexa API
+* Amazon Voice Services(AVS)
+* AWS Mobile Hub
+* AWS for web hosting
 
 ### The Steps I took to build this 
 
@@ -33,7 +43,7 @@ https://trello.com/b/S1LYXhDM/alexa-mobile-reminders-app
 	7. CRUD reminders model (NoSQL)
 5. Make ReadMe
 
-### Install Insturctions
+### Install Instructions
 
 ### Live links
 
