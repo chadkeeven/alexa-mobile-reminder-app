@@ -1,0 +1,23 @@
+{
+	"ProjectName": "alexa-mobile-reminder-app",
+	"ProjectPath": "/Users/chadkeeven/wdi-work/alexa-mobile-reminder-app",
+	"SourceDir": "/",
+	"DistributionDir": "build",
+	"BuildCommand": "npm run-script build",
+	"StartCommand": "npm run-script start",
+	"InitializationTime": "2018-02-23-12-35-44",
+	"LastConfigurationTime": "2018-02-23-12-39-06",
+	"LastNPMInstallTime": "",
+	"FrontendLastBuildTime": "",
+	"LastPublishTime": "",
+	"BackendFormat": "yml",
+	"BackendLastSyncTime": "2018-02-23-13-40-40",
+	"BackendLastBuildTime": "",
+	"BackendLastPushTime": "",
+	"BackendLastPushSuccessful": false,
+	"BackendProjectID": "85fb7ac8-4f05-4ce5-b8bb-e85e0b37eab8",
+	"BackendProjectName": "alexa-mobile-reminder-app",
+	"BackendProjectConsoleUrl": "https://console.aws.amazon.com/mobilehub/home#/85fb7ac8-4f05-4ce5-b8bb-e85e0b37eab8/build",
+	"BackendProjectCreationTime": "2018-02-23T19:33:33.758Z",
+	"BackendProjectLastUpdatedTime": "2018-02-23T19:33:55.070Z"
+}
