@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import Amplify, { API } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react-native';
 
 
 import awsmobile from './aws-exports';
@@ -8,74 +9,58 @@ import awsmobile from './aws-exports';
 
 Amplify.configure(awsmobile);
 
-export default class App extends React.Component {
- constructor(props) {
-  super(props); 
-  state = {
-    apiResponse: null,
-    noteId: '',
-   // text: 'reminder placeholder'
-  };  
-}
+class App extends React.Component {
+    state = {
+      apiResponse: null,
+    };
 
 
-
-handleChangeNoteId = (event) => {
-  this.setState({noteId: event});
-}
-
-  // saveReminder = () => {
-  //   console.log(this.state.text);
-
-  // }
-// Create a new Note according to the columns we defined earlier
-async saveNote() {
-  //console.log(this.state.text);
-  let newNote = {
-    body: {
-      "NoteTitle": "hi chad",
-      "NoteContent": "This is so cool!",
-      "NoteId": state.noteId
+  // Create a new reminder according to the columns we defined earlier
+  async saveReminder() {
+    let newReminder = {
+      body: {
+        "task": "My first task!"
+      }
     }
-  }
-  const path = "/Notes";
+    const path = "/reminders";
 
       // Use the API module to save the note to the database
       try {
-        const apiResponse = await API.put("NotesCRUD", path, newNote);
-        console.log("response from saving note: " + apiResponse);
-        //this.setState({apiResponse});
+        const apiResponse = await API.put("remindersCRUD", path, newReminder);
+        console.log(apiResponse);
+        console.log("response from saving task: " + apiResponse);
+        this.setState({apiResponse});
       } catch (e) {
-        console.log();
-        console.log("Error: " + e);
+        console.log(e);
       }
     }
+  
 
-    render() {
-      return (
-        <View style={styles.container}>
-        <Text>Shake your phone to open the developer menu.</Text>
-        <Text>Hello Chad!</Text>
-        <Text>Reminders:</Text>
-        <TextInput
-        onChangeText={(text) => this.setState({text})}
-        value={state.text}/>
-        <Button
-        onPress={this.saveNote}
-        title="Save"
-        color="#841584"
-        accessibilityLabel="Learn more about this purple button"
-        />
-        </View>
-        );
-      }
+  render() {
+    return (
+      <View style={styles.container}>
+      <Text>Shake your phone to open the developer menu.</Text>
+      <Text>Hello Chad!</Text>
+      <Text>Reminders:</Text>
+      <Button
+      fontFamily='lato'
+      containerViewStyle={{ marginTop: 20 }}
+      title="Save"
+      onPress={this.saveReminder}
+      />
+      </View>
+      );
     }
+  }
 
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-    });
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+  });
+
+
+  export default withAuthenticator(App);
