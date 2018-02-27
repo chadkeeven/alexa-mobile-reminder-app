@@ -1,66 +1,87 @@
-import React from 'react';
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import Amplify, { API } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 
+import ListReminders from './src/Components/ListReminders'
+import AddReminder from './src/Components/AddReminder';
 
-import awsmobile from './aws-exports';
+
+
+import awsmobile from './src/aws-exports';
 
 
 Amplify.configure(awsmobile);
 
-class App extends React.Component {
+export default class App extends Component {
+
     state = {
-      apiResponse: null,
+      reminders: ['One', 'Two'],
+     // apiResponse: null,
     };
 
 
   // Create a new reminder according to the columns we defined earlier
-  async saveReminder() {
-    let newReminder = {
-      body: {
-        "task": "My first task!"
-      }
-    }
-    const path = "/reminders";
+  //async 
+  saveReminder = (text) => {
+  //console.log("hello")
+    const {reminders} = this.state
+    this.setState({
+      reminders: [text, ...reminders],
+    })
+  }
+//     let newReminder = {
+//       body: {
+//         "task": "My first task!"
+//       }
+//     }
+//     const path = "/reminders";
 
-      // Use the API module to save the note to the database
-      try {
-        const apiResponse = await API.put("remindersCRUD", path, newReminder);
-        console.log(apiResponse);
-        console.log("response from saving task: " + apiResponse);
-        this.setState({apiResponse});
-      } catch (e) {
-        console.log(e);
-      }
-    }
+//       // Use the API module to save the note to the database
+//       try {
+//         const apiResponse = await API.put("remindersCRUD", path, newReminder);
+//         console.log(apiResponse);
+//         console.log("response from saving task: " + apiResponse);
+//        // this.setState({apiResponse});
+//       } catch (e) {
+//         console.log(e);
+//       }
+    removeReminder = (index) => {
+    const {reminders} = this.state
+
+    this.setState({
+      reminders: reminders.filter((reminders, i) => i !== index),
+    })
+  }
   
 
   render() {
+    const {reminders} = this.state
+    
     return (
-      <View style={styles.container}>
-      <Text>Shake your phone to open the developer menu.</Text>
-      <Text>Hello Chad!</Text>
+     // style={styles.container}
+      <View>
       <Text>Reminders:</Text>
-      <Button
-      fontFamily='lato'
-      containerViewStyle={{ marginTop: 20 }}
-      title="Save"
-      onPress={this.saveReminder}
-      />
+        <AddReminder
+          placeholder={'Type a reminder, then hit submit'}
+          onPress={this.saveReminder}
+          />
+        <ListReminders
+          list={reminders}
+          onPressItem={this.removeReminder}
+        />
       </View>
       );
     }
   }
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
+//   const styles = StyleSheet.create({
+//     container: {
+//       flex: 1,
+//       backgroundColor: '#fff',
+//       alignItems: 'center',
+//       justifyContent: 'center',
+//     },
+//   });
 
-
-  export default withAuthenticator(App);
+//   export default withAuthenticator(App);

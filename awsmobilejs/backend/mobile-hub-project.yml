@@ -2,66 +2,15 @@
 apps:
   react-native: !com.amazonaws.mobilehub.v0.AppDO {}
 features:
-  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
-    components:
-      remindersCRUD: !com.amazonaws.mobilehub.v0.API 
-        attributes:
-          name: remindersCRUD
-          requires-signin: false
-          sdk-generation-stage-name: Development
-        paths:
-          /reminders: !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/reminders-20180225193744.zip
-            description: 'Handler for calls to resource path : /reminders/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: nquvS9uzM6254sJ2fkSav1iZa63RH/OWOFxVKxQukqs=
-            memorySize: '128'
-            modified: '2018-02-26T02:38:17.816+0000'
-            name: reminders
-            runtime: nodejs6.10
-            timeout: '3'
-            version: IujHRA.JjiYoaj__E7LQ5EXRwujw01oN
-          '/reminders/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
-            codeFilename: uploads/reminders-20180225193744.zip
-            description: 'Handler for calls to resource path : /reminders/{proxy+}'
-            enableCORS: true
-            environment: {}
-            handler: lambda.handler
-            hashcode: nquvS9uzM6254sJ2fkSav1iZa63RH/OWOFxVKxQukqs=
-            memorySize: '128'
-            modified: '2018-02-26T02:38:17.816+0000'
-            name: reminders
-            runtime: nodejs6.10
-            timeout: '3'
-            version: TL0zM7Vbj0HCRSSWyTtUNRHFj64_Evjz
   content-delivery: !com.amazonaws.mobilehub.v0.ContentDelivery 
     attributes:
       enabled: true
       visibility: public-global
     components:
       release: !com.amazonaws.mobilehub.v0.Bucket {}
-  database: !com.amazonaws.mobilehub.v0.Database 
-    components:
-      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
-        tables:
-          - !com.amazonaws.mobilehub.v0.NoSQLTable 
-            attributes:
-              task: S
-              userId: S
-            hashKeyName: userId
-            hashKeyType: S
-            rangeKeyName: ''
-            rangeKeyType: ''
-            tableName: ___DYNAMIC_PREFIX___-reminders
-            tablePrivacy: private
   mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
     components:
       analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
-      messaging-sms: !com.amazonaws.mobilehub.v0.PinpointMessaging 
-        attributes:
-          deliveryType: sms
   sign-in: !com.amazonaws.mobilehub.v0.SignIn 
     attributes:
       enabled: true
@@ -71,13 +20,14 @@ features:
         attributes:
           alias-attributes:
             - email
-          mfa-configuration: OFF
+            - phone_number
+          mfa-configuration: ON
           name: userpool
           password-policy: !com.amazonaws.mobilehub.ConvertibleMap 
-            min-length: '6'
-            require-lower-case: false
-            require-numbers: false
-            require-symbols: false
-            require-upper-case: false
+            min-length: '8'
+            require-lower-case: true
+            require-numbers: true
+            require-symbols: true
+            require-upper-case: true
 name: alexa-mobile-reminder-app
 region: us-east-1
