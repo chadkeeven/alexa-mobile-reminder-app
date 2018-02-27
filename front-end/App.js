@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, Platform } from 'react-native';
 import Amplify, { API } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react-native';
 
@@ -9,6 +9,10 @@ import AddReminder from './src/Components/AddReminder';
 
 
 import awsmobile from './src/aws-exports';
+
+if (Platform.Version === 25) {
+  console.log('Running on Nougat!');
+}
 
 
 Amplify.configure(awsmobile);
@@ -31,7 +35,8 @@ class App extends Component {
       let newReminder = {
         body: {
           "task": text,
-          "taskId": 2
+          "taskId": 2,
+          "userId": "chadkeeven"
         }
       }
       console.log(newReminder.body)
