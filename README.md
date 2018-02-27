@@ -17,16 +17,17 @@ Screenshots of app go here too
 https://trello.com/b/S1LYXhDM/alexa-mobile-reminders-app
 
 ### Technologies Used
-* HTML5
-* Node.js
 * React Native
+* Node.js
 * NoSQL
-* Passport node module
-* SASS
 * Alexa API
 * Amazon Voice Services(AVS)
 * AWS Mobile Hub
-* AWS for web hosting
+* AWS Pinpoint for Messaging and Analytics
+* AWS Cognito for User Sign-in
+* AWS DynamoDB
+* AWS Lambda
+* AWS S3
 
 ### The Steps I took to build this 
 
@@ -45,9 +46,13 @@ https://trello.com/b/S1LYXhDM/alexa-mobile-reminders-app
 
 ### Install Instructions
 
+
 ### Live links
 
 ### Bugs/Unsolved Problems
+
+* Amazon Lex
+* User Signin
 
 
 
