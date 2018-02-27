@@ -11,13 +11,11 @@ onChangeText = (text) => {
   console.log(this.state.text)
   this.setState({text})
 }
-   onSubmitReminder = () => {
-    //const onSubmitReminder = this.props
+ onSubmitReminder = () => {
     const {text} = this.state
 
     if (!text) return // Don't submit if empty
     this.props.onPress(text)
-    //onSubmitReminder(text)
     this.setState({text: ''})
   }
 
@@ -37,7 +35,7 @@ onChangeText = (text) => {
           fontFamily='lato'
           containerViewStyle={{ marginTop: 20 }}
           title="Save"
-          onPress={this.onSubmitReminder}
+          onPress={this.onSubmitReminder.bind(this)}
           />
       </View>
     )

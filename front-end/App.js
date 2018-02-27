@@ -13,39 +13,44 @@ import awsmobile from './src/aws-exports';
 
 Amplify.configure(awsmobile);
 
-export default class App extends Component {
+class App extends Component {
 
     state = {
       reminders: ['One', 'Two'],
-     // apiResponse: null,
+      apiResponse: null
     };
+  handleChangeUserId = (event) => {
+    console.log("hi")
+        this.setState({userId: event});
+}
 
-
-  // Create a new reminder according to the columns we defined earlier
-  //async 
-  saveReminder = (text) => {
-  //console.log("hello")
+  saveReminder = async (text) => {  
     const {reminders} = this.state
+    console.log(`this is ${text}`)
+    // Create a new Reminder according to the columns we defined earlier
+      let newReminder = {
+        body: {
+          "task": text,
+          "taskId": 2
+        }
+      }
+      console.log(newReminder.body)
+      const path = "/Reminders";
+
+      // Use the API module to save the task to the database
+      try {
+        const apiResponse = await API.put("RemindersCRUD", path, newReminder)
+       // console.log("hi");
+        console.log("response from saving reminder: " + apiResponse);
+        this.setState({apiResponse});
+      } catch (e) {
+        console.log(e);
+      }
     this.setState({
       reminders: [text, ...reminders],
     })
   }
-//     let newReminder = {
-//       body: {
-//         "task": "My first task!"
-//       }
-//     }
-//     const path = "/reminders";
 
-//       // Use the API module to save the note to the database
-//       try {
-//         const apiResponse = await API.put("remindersCRUD", path, newReminder);
-//         console.log(apiResponse);
-//         console.log("response from saving task: " + apiResponse);
-//        // this.setState({apiResponse});
-//       } catch (e) {
-//         console.log(e);
-//       }
     removeReminder = (index) => {
     const {reminders} = this.state
 
@@ -83,5 +88,4 @@ export default class App extends Component {
 //       justifyContent: 'center',
 //     },
 //   });
-
-//   export default withAuthenticator(App);
+export default withAuthenticator(App);
